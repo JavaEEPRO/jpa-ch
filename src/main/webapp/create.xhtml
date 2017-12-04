@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<title>chat</title>
+</h:head>
+<h:body>
+
+    <div style="overflow:scroll; height:150px; width:333px; background-color: powderblue ">
+
+        <h3>Chat:</h3>
+
+        <h:dataTable value="#{chManager.allMessages}" var="message">
+
+            <h:column>
+                <h:outputText style="font-size: smaller" value="#{message.time}" />
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{message.author}" />
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{message.data}" />
+            </h:column>
+
+            <!--h:column>
+                <h:outputText value="#{message.password}" />
+            </h:column-->
+        </h:dataTable>
+    </div>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputText value="user: "/>
+            <h:inputText value="#{chManager.data}" />
+
+
+            <h:outputText value="Action: "/>
+            <h:commandButton value="Send message" action="#{chManager.createMessage()}"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
