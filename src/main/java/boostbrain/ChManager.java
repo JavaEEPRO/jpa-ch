@@ -16,12 +16,16 @@ public class ChManager implements Serializable{
 
     private String data;
     private String password;
+    private String color;
 
     private boolean loginSuccess;
     private boolean createSuccess;
+    private boolean pickedSuccess;
 
     @EJB
     private ChEngine chEngine;
+
+
 
     public String getData() {
         return data;
@@ -51,6 +55,22 @@ public class ChManager implements Serializable{
         return createSuccess;
     }
 
+    public boolean isPickedSuccess() {
+        return pickedSuccess;
+    }
+
+    public void setPickedSuccess(boolean pickedSuccess) {
+        this.pickedSuccess = pickedSuccess;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public void setCreateSuccess(boolean createSuccess) {
         this.createSuccess = createSuccess;
     }
@@ -66,4 +86,8 @@ public class ChManager implements Serializable{
     public List<MessageEntity> getAllMessages(){
         return chEngine.getAllMessages();
     }
+
+    public void generateColor() {}
+
+
 }

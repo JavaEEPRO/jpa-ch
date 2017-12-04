@@ -53,12 +53,12 @@ public class ChEngine {
         long time = date.getTime();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time);
-        SimpleDateFormat format = new SimpleDateFormat("MMM:dd:hh:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("MMM dd hh:mm:ss");
 
         messageEntity.setData(data);
         messageEntity.setTime(format.format(calendar.getTime()));
         messageEntity.setAuthor("user: ");
-        messageEntity.setPassword("empty pwd");
+        messageEntity.setPassword(generateColor());
         entityManager.persist(messageEntity);
 
         return true;
@@ -74,5 +74,12 @@ public class ChEngine {
             reverse.add(0, message);
         }
         return reverse;
+    }
+
+    int i = 0;
+    public String generateColor() {
+        i++;
+        if (i%2==0) {return "#7fffd4";}
+     return "#ffe4c4";
     }
 }
